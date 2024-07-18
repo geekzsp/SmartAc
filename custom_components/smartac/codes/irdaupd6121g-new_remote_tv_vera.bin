@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Error>
+  <Code>NoSuchBucket</Code>
+  <Message>The specified bucket does not exist.</Message>
+  <RequestId>58B2CE965CC26B8ECA2B0231</RequestId>
+  <HostId>oss-cn-hangzhou.aliyuncs.com</HostId>
+  <BucketName>yuekong_code_ii_debug</BucketName>
+</Error>

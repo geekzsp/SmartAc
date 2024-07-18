@@ -1,0 +1,76 @@
+{
+    "config": {
+        "abort": {
+            "no_index": "Missing index file",
+            "invalid_index": "Invalid index file"
+        },
+        "error": {
+            "no_device_file": "The remote control code file is missing, please confirm the integrity of SmartAC integration or test the next code",
+            "invalid_device_file": "Failed to parse the remote control code file, please try another code.",
+            "no_such_service": "No such service",
+            "no_broadlink_entry": "No such entry ID",
+            "no_mqtt_service": "MQTT service not found",
+            "call_service_failed": "Failed to call the service, please check the log or re-enter the correct service ID/entry ID"
+        },
+        "step": {
+            "user": {
+                "data": {
+                    "brand": "Brand"
+                },
+                "description": "Please select your brand",
+                "title": "Brand"
+            },
+            "device": {
+                "data": {
+                    "device": "Remote control code",
+                    "controller_type": "Controller Type",
+                    "controller_data": "Service ID/Entry ID/MQTT Topic"
+                },
+                "description": "Please select one of the remote control codes, and enter the test process after submitting. Make sure to set the correct IR Transmitter Service ID/Entry ID.",
+                "title": "Set remote control information"
+            },
+            "test_on": {
+                "data": {
+                    "ok": "Air conditioner has responded",
+                    "device": "Remote control code for next test",
+                    "controller_type": "Controller Type",
+                    "controller_data": "Service ID/Entry ID/MQTT Topic"
+                },
+                "description": "The power-on command has been sent, has the air conditioner responded? Check and submit to go to the next step, do not check and submit to continue testing the next code",
+                "title": "Power On"
+            },
+            "test_off": {
+                "data": {
+                    "ok": "Air conditioner has responded",
+                    "device": "Remote control code for next test",
+                    "controller_data": "Service ID/Entry ID/MQTT Topic"
+                },
+                "description": "The power-off command has been sent, has the air conditioner responded? Check and submit to go to the next step, do not check and submit to continue testing the next code",
+                "title": "Power Off"
+            },
+            "other": {
+                "data": {
+                    "name": "Air conditioner name",
+                    "temperature_sensor": "Temperature Sensor Entity ID",
+                    "humidity_sensor": "Humidity Sensor Entity ID",
+                    "power_sensor": "Power Sensor Entity ID"
+                },
+                "title": "Other settings"
+            }
+        }
+    },
+    "options": {
+        "step": {
+            "init": {
+                "data": {
+                    "controller_type": "Controller Type",
+                    "controller_data": "Service ID/Entry ID/MQTT Topic",
+                    "temperature_sensor": "Temperature Sensor Entity ID",
+                    "humidity_sensor": "Humidity Sensor Entity ID",
+                    "power_sensor": "Power Sensor Entity ID"
+                },
+                "title": "Update settings"
+            }
+        }
+    }
+}
