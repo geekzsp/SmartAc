@@ -354,7 +354,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
                 if operation_mode.lower() == HVAC_MODE_OFF:
                     await self._controller.send(self._commands['off'])
                     return
-                _LOGGER.error('操作模式 %s',self._commands)
                 if 'on' in self._commands:
                     await self._controller.send(self._commands['on'])
                     await asyncio.sleep(self._delay)
@@ -401,7 +400,7 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
             if self._power_sensor_restore_state == True and self._last_on_operation is not None:
                 self._hvac_mode = self._last_on_operation
             else:
-                self._hvac_mode = STATE_ON
+                self._hvac_mode = 'cool'
 
             self.async_write_ha_state()
 
