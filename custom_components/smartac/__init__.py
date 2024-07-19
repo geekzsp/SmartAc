@@ -20,6 +20,7 @@ PLATFORMS = [Platform.CLIMATE]
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry
 ) -> bool:
+    _LOGGER.error('hisense_hai_xin13')
     entry.add_update_listener(async_reload_entry)
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
     return True
@@ -28,16 +29,19 @@ async def async_setup_entry(
 async def async_unload_entry(
     hass: HomeAssistant, config_entry: ConfigEntry
 ) -> bool:
+    _LOGGER.error('hisense_hai_xin14')
     # Forward to the same platform as async_setup_entry did
     return await hass.config_entries.async_unload_platforms(config_entry, PLATFORMS)
 
 
 async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
+    _LOGGER.error('hisense_hai_xin15')
     await async_unload_entry(hass, config_entry)
     await async_setup_entry(hass, config_entry)
 
 async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> bool:
     """Migrate old entry."""
+    _LOGGER.error('hisense_hai_xin16')
     if config_entry.version == 1:
         data = {**config_entry.data, CONF_CONTROLLER_TYPE:ESPHOME_CONTROLLER}
         data[CONF_CONTROLLER_DATA] = data['controller_service']
