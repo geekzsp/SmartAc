@@ -54,7 +54,6 @@ async def async_setup_entry(
     async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Set up the IR Climate platform."""
-    _LOGGER.error('hisense_hai_xin1')
     if not os.path.isdir(CODES_AB_DIR):
         os.makedirs(CODES_AB_DIR)
 
@@ -144,7 +143,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def async_added_to_hass(self):
         """Run when entity about to be added."""
-        _LOGGER.error('hisense_hai_xin2')
         await super().async_added_to_hass()
 
         last_state = await self.async_get_last_state()
@@ -275,7 +273,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def async_set_temperature(self, **kwargs):
         """Set new target temperatures."""
-        _LOGGER.error('hisense_hai_xin3')
         hvac_mode = kwargs.get(ATTR_HVAC_MODE)
         temperature = kwargs.get(ATTR_TEMPERATURE)
 
@@ -299,7 +296,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def async_set_hvac_mode(self, hvac_mode):
         """Set operation mode."""
-        _LOGGER.error('hisense_hai_xin4')
         self._hvac_mode = hvac_mode
         _LOGGER.error('async_set_hvac_mode5 %s self._hvac_mode %s',hvac_mode,self._hvac_mode)
         if not hvac_mode == HVAC_MODE_OFF:
@@ -312,7 +308,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def async_set_fan_mode(self, fan_mode):
         """Set fan mode."""
-        _LOGGER.error('hisense_hai_xin5')
         self._current_fan_mode = fan_mode
 
         if not self._hvac_mode.lower() == HVAC_MODE_OFF:
@@ -321,7 +316,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def async_set_swing_mode(self, swing_mode):
         """Set swing mode."""
-        _LOGGER.error('hisense_hai_xin6')
         self._current_swing_mode = swing_mode
 
         if not self._hvac_mode.lower() == HVAC_MODE_OFF:
@@ -330,19 +324,16 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def async_turn_off(self):
         """Turn off."""
-        _LOGGER.error('hisense_hai_xin7')
         await self.async_set_hvac_mode(HVAC_MODE_OFF)
 
     async def async_turn_on(self):
         """Turn on."""
-        _LOGGER.error('hisense_hai_xin8')
         if self._last_on_operation is not None:
             await self.async_set_hvac_mode(self._last_on_operation)
         else:
             await self.async_set_hvac_mode(self._operation_modes[1])
 
     async def send_command(self):
-        _LOGGER.error('hisense_hai_xin9')
         async with self._temp_lock:
             try:
                 self._on_by_remote = False
@@ -370,7 +361,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def _async_temp_sensor_changed(self, entity_id, old_state, new_state):
         """Handle temperature sensor changes."""
-        _LOGGER.error('hisense_hai_xin9')
         if new_state is None:
             return
 
@@ -379,7 +369,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def _async_humidity_sensor_changed(self, entity_id, old_state, new_state):
         """Handle humidity sensor changes."""
-        _LOGGER.error('hisense_hai_xin10')
         if new_state is None:
             return
 
@@ -388,7 +377,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     async def _async_power_sensor_changed(self, entity_id, old_state, new_state):
         """Handle power sensor changes."""
-        _LOGGER.error('hisense_hai_xin11')
         if new_state is None:
             return
 
@@ -413,7 +401,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
     @callback
     def _async_update_temp(self, state):
         """Update thermostat with latest state from temperature sensor."""
-        _LOGGER.error('hisense_hai_xin11')
         try:
             if state.state != STATE_UNKNOWN and state.state != STATE_UNAVAILABLE:
                 self._current_temperature = float(state.state)
@@ -422,7 +409,6 @@ class SmartACClimate(ClimateEntity, RestoreEntity):
 
     @callback
     def _async_update_humidity(self, state):
-        _LOGGER.error('hisense_hai_xin12')
         """Update thermostat with latest state from humidity sensor."""
         try:
             if state.state != STATE_UNKNOWN and state.state != STATE_UNAVAILABLE:
