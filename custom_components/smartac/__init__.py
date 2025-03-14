@@ -35,7 +35,20 @@ async def async_unload_entry(
 
 
 async def async_reload_entry(hass: HomeAssistant, config_entry: ConfigEntry) -> None:
-    _LOGGER.error('hisense_hai_xin15')
+    """Reload the config entry when it changes."""
+    _LOGGER.debug("Config entry was updated, checking if reload is needed")
+    
+    # 获取更新前的数据
+    old_data = dict(config_entry.data)
+    
+    # 检查是否只是标题或其他非关键数据更改
+    if (not config_entry.options and 
+        old_data.get(CONF_CONTROLLER_TYPE) == config_entry.data.get(CONF_CONTROLLER_TYPE) and
+        old_data.get(CONF_CONTROLLER_DATA) == config_entry.data.get(CONF_CONTROLLER_DATA)):
+        _LOGGER.debug("No critical changes detected, skipping reload")
+        return
+        
+    _LOGGER.info("Reloading SmartAC config entry")
     await async_unload_entry(hass, config_entry)
     await async_setup_entry(hass, config_entry)
 

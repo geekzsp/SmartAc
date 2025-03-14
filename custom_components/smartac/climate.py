@@ -6,14 +6,10 @@ from homeassistant.helpers.event import async_track_state_change
 from homeassistant.helpers.restore_state import RestoreEntity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.entity import DeviceInfo
-from homeassistant.components.climate import ClimateEntity
-from homeassistant.components.climate.const import (
-    HVAC_MODE_OFF,
-    SUPPORT_TARGET_TEMPERATURE,
-    SUPPORT_FAN_MODE,
-    SUPPORT_SWING_MODE,
-    HVAC_MODES,
-    ATTR_HVAC_MODE
+from homeassistant.components.climate import (
+    ClimateEntity,
+    HVACMode,
+    ClimateEntityFeature,
 )
 from homeassistant.const import (
     CONF_NAME,
@@ -41,6 +37,14 @@ from .const import (
     CONF_POWER_SENSOR,
     DEFAULT_DELAY
 )
+
+# 更新常量引用
+HVAC_MODE_OFF = HVACMode.OFF
+SUPPORT_TARGET_TEMPERATURE = ClimateEntityFeature.TARGET_TEMPERATURE
+SUPPORT_FAN_MODE = ClimateEntityFeature.FAN_MODE
+SUPPORT_SWING_MODE = ClimateEntityFeature.SWING_MODE
+HVAC_MODES = [mode.value for mode in HVACMode]
+ATTR_HVAC_MODE = "hvac_mode"
 
 SUPPORT_FLAGS = (
     SUPPORT_TARGET_TEMPERATURE |
